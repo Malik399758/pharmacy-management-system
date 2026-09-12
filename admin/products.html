@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Manage pharmacy products"
+    >
+
+    <title>Products | Pharmacy Admin</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <span class="admin-logo-icon">
+                    💊
+                </span>
+
+                <div>
+
+                    <strong>
+                        Pharmacy
+                    </strong>
+
+                    <small>
+                        ADMIN PANEL
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <div class="nav-section-title">
+                    MAIN MENU
+                </div>
+
+
+                <a href="dashboard.html">
+
+                    <span>📊</span>
+
+                    Dashboard
+
+                </a>
+
+
+                <a
+                    href="products.html"
+                    class="active"
+                >
+
+                    <span>📦</span>
+
+                    Products
+
+                </a>
+
+
+                <a href="orders.html">
+
+                    <span>🛒</span>
+
+                    Orders
+
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button onclick="logout()">
+
+                    <span>
+                        🚪
+                    </span>
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="admin-main">
+
+
+            <!-- HEADER -->
+
+            <header class="admin-topbar">
+
+                <div>
+
+                    <span class="admin-page-label">
+                        INVENTORY
+                    </span>
+
+                    <h1>
+                        Product Management
+                    </h1>
+
+                    <p>
+                        Add, edit and manage your pharmacy products.
+                    </p>
+
+                </div>
+
+
+                <div class="admin-profile">
+
+                    <div class="admin-avatar">
+                        A
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Pharmacy Admin
+                        </strong>
+
+                        <small>
+                            Administrator
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- ADD PRODUCT -->
+
+            <section class="admin-section product-form-section">
+
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <span class="admin-page-label">
+                            INVENTORY
+                        </span>
+
+                        <h2>
+                            Add New Product
+                        </h2>
+
+                        <p>
+                            Add a new medicine or healthcare product.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="product-form">
+
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Product Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="e.g. Panadol"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="price">
+                            Price (Rs.)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="price"
+                            placeholder="e.g. 100"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="category">
+                            Category
+                        </label>
+
+                        <input
+                            type="text"
+                            id="category"
+                            placeholder="e.g. Medicine"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="stock">
+                            Stock Quantity
+                        </label>
+
+                        <input
+                            type="number"
+                            id="stock"
+                            placeholder="e.g. 50"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full-width">
+
+                        <label for="description">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="description"
+                            placeholder="Enter product description"
+                            rows="4"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="full-width">
+
+                        <button
+                            type="submit"
+                            class="add-product-btn"
+                        >
+                            + Add Product
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </section>
+
+
+            <!-- ALL PRODUCTS -->
+
+            <section class="admin-section">
+
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <span class="admin-page-label">
+                            CATALOG
+                        </span>
+
+                        <h2>
+                            All Products
+                        </h2>
+
+                        <p>
+                            View and manage your available products.
+                        </p>
+
+                    </div>
+
+
+                    <div class="product-count-badge">
+                        📦 Products
+                    </div>
+
+                </div>
+
+
+                <div id="products">
+
+                    <div class="admin-loading">
+                        Loading products...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- EDIT FORM -->
+
+            <div id="edit-form-container"></div>
+
+
+        </main>
+
+    </div>
+
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/products.js"></script>
+
+</body>
+
+</html>

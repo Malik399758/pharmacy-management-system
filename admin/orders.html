@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Manage pharmacy customer orders"
+    >
+
+    <title>Orders | Pharmacy Admin</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <span class="admin-logo-icon">
+                    💊
+                </span>
+
+                <div>
+
+                    <strong>
+                        Pharmacy
+                    </strong>
+
+                    <small>
+                        ADMIN PANEL
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <div class="nav-section-title">
+                    MAIN MENU
+                </div>
+
+
+                <a href="dashboard.html">
+
+                    <span>📊</span>
+
+                    Dashboard
+
+                </a>
+
+
+                <a href="products.html">
+
+                    <span>📦</span>
+
+                    Products
+
+                </a>
+
+
+                <a
+                    href="orders.html"
+                    class="active"
+                >
+
+                    <span>🛒</span>
+
+                    Orders
+
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button onclick="logout()">
+
+                    <span>
+                        🚪
+                    </span>
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="admin-main">
+
+
+            <!-- HEADER -->
+
+            <header class="admin-topbar">
+
+                <div>
+
+                    <span class="admin-page-label">
+                        SALES
+                    </span>
+
+                    <h1>
+                        Order Management
+                    </h1>
+
+                    <p>
+                        Manage and track customer orders.
+                    </p>
+
+                </div>
+
+
+                <div class="admin-profile">
+
+                    <div class="admin-avatar">
+                        A
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Pharmacy Admin
+                        </strong>
+
+                        <small>
+                            Administrator
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- ORDERS SECTION -->
+
+            <section class="admin-section">
+
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <span class="admin-page-label">
+                            CUSTOMER ORDERS
+                        </span>
+
+                        <h2>
+                            All Orders
+                        </h2>
+
+                        <p>
+                            View customer information,
+                            order details and update status.
+                        </p>
+
+                    </div>
+
+
+                    <div class="orders-count-badge">
+                        🛒 Orders
+                    </div>
+
+                </div>
+
+
+                <div id="orders">
+
+                    <div class="admin-loading">
+                        Loading orders...
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/orders.js"></script>
+
+</body>
+
+</html>

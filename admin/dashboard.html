@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Pharmacy Store Admin Dashboard"
+    >
+
+    <title>Dashboard | Pharmacy Admin</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <span class="admin-logo-icon">
+                    💊
+                </span>
+
+                <div>
+                    <strong>
+                        Pharmacy
+                    </strong>
+
+                    <small>
+                        ADMIN PANEL
+                    </small>
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <div class="nav-section-title">
+                    MAIN MENU
+                </div>
+
+                <a
+                    href="dashboard.html"
+                    class="active"
+                >
+                    <span>📊</span>
+                    Dashboard
+                </a>
+
+                <a href="products.html">
+                    <span>📦</span>
+                    Products
+                </a>
+
+                <a href="orders.html">
+                    <span>🛒</span>
+                    Orders
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button onclick="logout()">
+
+                    <span>
+                        🚪
+                    </span>
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================================
+             MAIN CONTENT
+        ========================================== -->
+
+        <main class="admin-main">
+
+
+            <!-- HEADER -->
+
+            <header class="admin-topbar">
+
+                <div>
+
+                    <span class="admin-page-label">
+                        OVERVIEW
+                    </span>
+
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                    <p>
+                        Welcome back! Here's what's
+                        happening with your pharmacy store.
+                    </p>
+
+                </div>
+
+
+                <div class="admin-profile">
+
+                    <div class="admin-avatar">
+                        A
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Pharmacy Admin
+                        </strong>
+
+                        <small>
+                            Administrator
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =====================================
+                 STATISTICS
+            ====================================== -->
+
+            <section class="dashboard-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-card-top">
+
+                        <div class="stat-icon products-icon">
+                            📦
+                        </div>
+
+                        <span class="stat-label">
+                            PRODUCTS
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Total Products
+                    </h3>
+
+                    <p id="total-products">
+                        0
+                    </p>
+
+                    <div class="stat-footer">
+                        Available in store
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-card-top">
+
+                        <div class="stat-icon orders-icon">
+                            🛒
+                        </div>
+
+                        <span class="stat-label">
+                            ORDERS
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Total Orders
+                    </h3>
+
+                    <p id="total-orders">
+                        0
+                    </p>
+
+                    <div class="stat-footer">
+                        Customer orders
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-card-top">
+
+                        <div class="stat-icon pending-icon">
+                            ⏳
+                        </div>
+
+                        <span class="stat-label">
+                            PENDING
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Pending Orders
+                    </h3>
+
+                    <p id="pending-orders">
+                        0
+                    </p>
+
+                    <div class="stat-footer">
+                        Awaiting confirmation
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-card-top">
+
+                        <div class="stat-icon sales-icon">
+                            💰
+                        </div>
+
+                        <span class="stat-label">
+                            SALES
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Total Sales
+                    </h3>
+
+                    <p>
+                        Rs.
+                        <span id="total-sales">
+                            0
+                        </span>
+                    </p>
+
+                    <div class="stat-footer">
+                        Confirmed orders
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- =====================================
+                 RECENT ORDERS
+            ====================================== -->
+
+            <section class="recent-orders">
+
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <span class="admin-page-label">
+                            ACTIVITY
+                        </span>
+
+                        <h2>
+                            Recent Orders
+                        </h2>
+
+                        <p>
+                            Latest customer orders
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="orders.html"
+                        class="view-all-btn"
+                    >
+                        View All Orders →
+                    </a>
+
+                </div>
+
+
+                <div id="recent-orders-container">
+
+                    <div class="admin-loading">
+                        Loading recent orders...
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

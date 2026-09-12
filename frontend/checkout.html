@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Secure Checkout - Pharmacy Store"
+    >
+
+    <title>Checkout | Pharmacy Store</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <span class="logo-icon">
+                💊
+            </span>
+
+            <span>
+                Pharmacy Store
+            </span>
+
+        </div>
+
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#products-section">
+                Products
+            </a>
+
+            <a href="cart.html">
+                Cart
+            </a>
+
+            <a href="my-orders.html">
+                My Orders
+            </a>
+
+        </nav>
+
+
+        <a href="cart.html" class="cart">
+            🛒
+            <span>Cart</span>
+        </a>
+
+    </header>
+
+
+    <main>
+
+        <section class="checkout-section">
+
+            <div class="section-header">
+
+                <span class="section-label">
+                    Secure Checkout
+                </span>
+
+                <h2>
+                    Complete Your Order
+                </h2>
+
+                <p>
+                    Enter your delivery information
+                    to place your order.
+                </p>
+
+            </div>
+
+
+            <div class="checkout-container">
+
+
+                <!-- CUSTOMER INFORMATION -->
+
+                <div class="checkout-card">
+
+                    <div class="checkout-card-header">
+
+                        <div class="checkout-icon">
+                            👤
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Delivery Information
+                            </h3>
+
+                            <p>
+                                Where should we deliver your order?
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <form id="checkout-form">
+
+                        <div class="form-group">
+
+                            <label for="customerName">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="customerName"
+                                placeholder="Enter your full name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                placeholder="03XXXXXXXXX"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="address">
+                                Delivery Address
+                            </label>
+
+                            <textarea
+                                id="address"
+                                placeholder="Enter your complete delivery address"
+                                rows="5"
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="checkout-security">
+
+                            <span>🔒</span>
+
+                            <p>
+                                Your information is securely
+                                used only for order delivery.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="place-order-btn"
+                        >
+                            Place Order →
+                        </button>
+
+
+                        <p id="message"></p>
+
+                    </form>
+
+                </div>
+
+
+                <!-- ORDER INFO -->
+
+                <div class="checkout-side">
+
+                    <div class="checkout-info-card">
+
+                        <div class="checkout-side-icon">
+                            🛒
+                        </div>
+
+                        <h3>
+                            Your Order
+                        </h3>
+
+                        <p>
+                            Your selected products will be
+                            confirmed after you place the order.
+                        </p>
+
+                    </div>
+
+
+                    <div class="checkout-info-card">
+
+                        <div class="checkout-side-icon">
+                            🚚
+                        </div>
+
+                        <h3>
+                            Delivery
+                        </h3>
+
+                        <p>
+                            Your order will be processed
+                            and delivered to your provided address.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="cart.html"
+                        class="back-cart-link"
+                    >
+                        ← Back to Cart
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <div class="logo">
+
+                    <span class="logo-icon">
+                        💊
+                    </span>
+
+                    <span>
+                        Pharmacy Store
+                    </span>
+
+                </div>
+
+                <p>
+                    Quality healthcare products
+                    at your fingertips.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="index.html#products-section">
+                    Products
+                </a>
+
+                <a href="my-orders.html">
+                    My Orders
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>
+                    Shopping
+                </h3>
+
+                <a href="cart.html">
+                    Shopping Cart
+                </a>
+
+                <a href="checkout.html">
+                    Checkout
+                </a>
+
+            </div>
+
+
+            <div class="footer-contact">
+
+                <h3>
+                    Need Help?
+                </h3>
+
+                <p>📞 Customer Support</p>
+                <p>📍 Pakistan</p>
+                <p>💙 We're here to help</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Pharmacy Store.
+                All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="checkout.js"></script>
+
+</body>
+
+</html>

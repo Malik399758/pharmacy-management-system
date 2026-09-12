@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Login | Pharmacy</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            font-family:
+                Arial,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eff6ff,
+                    #ecfeff
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+        .login-wrapper {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .login-card {
+            background: white;
+
+            padding: 40px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 20px 50px
+                rgba(15, 23, 42, 0.12);
+        }
+
+        .brand {
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+        .brand-icon {
+            width: 58px;
+            height: 58px;
+
+            margin: 0 auto 14px;
+
+            border-radius: 16px;
+
+            background: #1e3a8a;
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .brand h1 {
+            margin: 0;
+
+            color: #0b1f3a;
+
+            font-size: 28px;
+        }
+
+        .brand p {
+            margin-top: 8px;
+
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #334155;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+
+            padding: 14px;
+
+            border: 1px solid #cbd5e1;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            font-size: 15px;
+
+            transition: 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #1e3a8a;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(30, 58, 138, 0.1);
+        }
+
+        .forgot-password {
+            display: block;
+
+            text-align: right;
+
+            margin-top: -8px;
+            margin-bottom: 22px;
+
+            color: #1e3a8a;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            text-decoration: none;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+
+            border: none;
+
+            padding: 14px;
+
+            border-radius: 10px;
+
+            background: #1e3a8a;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .login-btn:hover {
+            background: #172e6d;
+        }
+
+        .login-btn:disabled {
+            opacity: 0.7;
+
+            cursor: not-allowed;
+        }
+
+        .message {
+            min-height: 20px;
+
+            margin-top: 16px;
+
+            text-align: center;
+
+            font-size: 14px;
+        }
+
+        .signup-link {
+            margin-top: 24px;
+
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: #1e3a8a;
+
+            font-weight: 600;
+
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+
+            .login-card {
+                padding: 28px 22px;
+            }
+
+            .brand h1 {
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="login-wrapper">
+
+
+        <div class="login-card">
+
+
+            <!-- BRAND -->
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    +
+                </div>
+
+                <h1>
+                    Welcome Back
+                </h1>
+
+                <p>
+                    Login to your pharmacy account
+                </p>
+
+            </div>
+
+
+            <!-- LOGIN FORM -->
+
+            <form id="login-form">
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- FORGOT PASSWORD -->
+
+                <a
+                    href="forgot-password.html"
+                    class="forgot-password"
+                >
+                    Forgot Password?
+                </a>
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                    id="login-btn"
+                >
+                    Login
+                </button>
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    class="message"
+                    id="message"
+                ></div>
+
+
+            </form>
+
+
+            <!-- SIGNUP -->
+
+            <div class="signup-link">
+
+                Don't have an account?
+
+                <a href="signup.html">
+                    Sign Up
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+        const loginForm =
+            document.getElementById(
+                "login-form"
+            );
+
+        const message =
+            document.getElementById(
+                "message"
+            );
+
+        const loginBtn =
+            document.getElementById(
+                "login-btn"
+            );
+
+
+        loginForm.addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim();
+
+
+                const password =
+                    document
+                        .getElementById("password")
+                        .value;
+
+
+                // Loading
+
+                loginBtn.disabled = true;
+
+                loginBtn.textContent =
+                    "Logging in...";
+
+                message.textContent =
+                    "";
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "http://localhost:5000/api/customers/login",
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body:
+                                    JSON.stringify({
+                                        email,
+                                        password
+                                    })
+                            }
+                        );
+
+
+                    const data =
+                        await response.json();
+
+
+                    // Check API response
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            data.message ||
+                            "Login failed"
+                        );
+
+                    }
+
+
+                    /*
+                        IMPORTANT:
+
+                        Customer JWT ko
+                        separate key mein save
+                        kar rahe hain.
+
+                        Admin ka token
+                        isse conflict nahi karega.
+                    */
+
+                    localStorage.setItem(
+                        "customerToken",
+                        data.token
+                    );
+
+
+                    // Optional customer information
+
+                    localStorage.setItem(
+                        "customer",
+                        JSON.stringify(
+                            data.customer
+                        )
+                    );
+
+
+                    message.textContent =
+                        "Login successful! Redirecting...";
+
+                    message.style.color =
+                        "#16a34a";
+
+
+                    // Go to home page
+
+                    setTimeout(
+                        function () {
+
+                            window.location.href =
+                                "index.html";
+
+                        },
+                        800
+                    );
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Login error:",
+                        error
+                    );
+
+
+                    message.textContent =
+                        error.message ||
+                        "Invalid email or password.";
+
+                    message.style.color =
+                        "#dc2626";
+
+
+                    loginBtn.disabled =
+                        false;
+
+                    loginBtn.textContent =
+                        "Login";
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

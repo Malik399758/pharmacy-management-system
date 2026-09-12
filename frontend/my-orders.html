@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Track your orders - Pharmacy Store"
+    >
+
+    <title>My Orders | Pharmacy Store</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <span class="logo-icon">
+                💊
+            </span>
+
+            <span>
+                Pharmacy Store
+            </span>
+
+        </div>
+
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#products-section">
+                Products
+            </a>
+
+            <a href="cart.html">
+                Cart
+            </a>
+
+            <a href="my-orders.html" class="active">
+                My Orders
+            </a>
+
+        </nav>
+
+
+        <a href="cart.html" class="cart">
+
+            🛒
+
+            <span>
+                Cart
+            </span>
+
+        </a>
+
+    </header>
+
+
+    <main>
+
+        <section class="orders-section">
+
+            <div class="section-header">
+
+                <span class="section-label">
+                    Order Tracking
+                </span>
+
+                <h2>
+                    My Orders
+                </h2>
+
+                <p>
+                    Enter your phone number to view
+                    your previous orders.
+                </p>
+
+            </div>
+
+
+            <div class="orders-search-card">
+
+                <div class="orders-search-icon">
+                    📦
+                </div>
+
+                <div>
+
+                    <h3>
+                        Find Your Orders
+                    </h3>
+
+                    <p>
+                        Use the phone number you provided
+                        during checkout.
+                    </p>
+
+                </div>
+
+
+                <form id="orders-form">
+
+                    <div class="orders-input-group">
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Enter phone number"
+                            required
+                        >
+
+                        <button type="submit">
+                            View Orders →
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <p id="message"></p>
+
+            </div>
+
+
+            <div id="orders-container">
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <div class="logo">
+
+                    <span class="logo-icon">
+                        💊
+                    </span>
+
+                    <span>
+                        Pharmacy Store
+                    </span>
+
+                </div>
+
+                <p>
+                    Quality healthcare products
+                    at your fingertips.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="index.html#products-section">
+                    Products
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>
+                    Shopping
+                </h3>
+
+                <a href="index.html#products-section">
+                    Shop Products
+                </a>
+
+                <a href="cart.html">
+                    Shopping Cart
+                </a>
+
+            </div>
+
+
+            <div class="footer-contact">
+
+                <h3>
+                    Need Help?
+                </h3>
+
+                <p>📞 Customer Support</p>
+                <p>📍 Pakistan</p>
+                <p>💙 We're here to help</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Pharmacy Store.
+                All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="my-orders.js"></script>
+
+</body>
+
+</html>
