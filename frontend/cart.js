@@ -254,3 +254,67 @@ function saveCart() {
 // ==========================================
 
 displayCart();
+// ==========================================
+// CHECKOUT LOGIN PROTECTION
+// ==========================================
+
+const checkoutBtn =
+    document.getElementById("checkout-btn");
+
+if (checkoutBtn) {
+
+    checkoutBtn.addEventListener(
+        "click",
+        function () {
+
+            const customerToken =
+                localStorage.getItem("customerToken");
+
+            if (!customerToken) {
+
+                alert(
+                    "Please login before proceeding to checkout."
+                );
+
+                window.location.href =
+                    "login.html";
+
+                return;
+            }
+
+            window.location.href =
+                "checkout.html";
+
+        }
+    );
+
+}
+
+// ==========================================
+// CUSTOMER LOGOUT
+// ==========================================
+
+const logoutBtn =
+    document.getElementById("logout-btn");
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener(
+        "click",
+        function () {
+
+            localStorage.removeItem(
+                "customerToken"
+            );
+
+            localStorage.removeItem(
+                "customer"
+            );
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
+
+}

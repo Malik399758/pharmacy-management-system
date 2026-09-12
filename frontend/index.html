@@ -544,6 +544,17 @@
 
     </footer>
 
+    <script>
+    const customerToken =
+        localStorage.getItem("customerToken");
+
+    if (!customerToken) {
+        window.location.href = "login.html";
+    }
+</script>
+
+<script src="app.js"></script>
+
 
     <script src="app.js"></script>
 
