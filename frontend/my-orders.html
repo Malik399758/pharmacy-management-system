@@ -56,6 +56,10 @@
                 My Orders
             </a>
 
+            <a href="profile.html">
+    My Profile
+</a>
+
         </nav>
 
 
@@ -69,82 +73,72 @@
 
         </a>
 
+        <button
+    id="logout-btn"
+    class="logout-btn"
+>
+    Logout
+</button>
+
     </header>
 
 
     <main>
 
-        <section class="orders-section">
+    <section class="orders-section">
 
-            <div class="section-header">
+        <div class="section-header">
 
-                <span class="section-label">
-                    Order Tracking
-                </span>
+            <span class="section-label">
+                Order History
+            </span>
 
-                <h2>
-                    My Orders
-                </h2>
+            <h2>
+                My Orders
+            </h2>
 
-                <p>
-                    Enter your phone number to view
-                    your previous orders.
+            <p>
+                Track your purchases, order status,
+                products and delivery details.
+            </p>
+
+        </div>
+
+
+        <!-- ORDER STATUS MESSAGE -->
+
+        <div class="orders-status-card">
+
+            <div class="orders-status-icon">
+                📦
+            </div>
+
+            <div>
+
+                <h3>
+                    Your Orders
+                </h3>
+
+                <p id="message">
+                    Loading your orders...
                 </p>
 
             </div>
 
-
-            <div class="orders-search-card">
-
-                <div class="orders-search-icon">
-                    📦
-                </div>
-
-                <div>
-
-                    <h3>
-                        Find Your Orders
-                    </h3>
-
-                    <p>
-                        Use the phone number you provided
-                        during checkout.
-                    </p>
-
-                </div>
+        </div>
 
 
-                <form id="orders-form">
+        <!-- ORDERS -->
 
-                    <div class="orders-input-group">
+        <div
+            id="orders-container"
+            class="orders-container"
+        >
+        </div>
 
-                        <input
-                            type="tel"
-                            id="phone"
-                            placeholder="Enter phone number"
-                            required
-                        >
+    </section>
 
-                        <button type="submit">
-                            View Orders →
-                        </button>
-
-                    </div>
-
-                </form>
-
-                <p id="message"></p>
-
-            </div>
-
-
-            <div id="orders-container">
-
-            </div>
-
-        </section>
-
-    </main>
+</main>
 
 
     <footer class="footer">

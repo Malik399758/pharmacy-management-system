@@ -4,8 +4,13 @@ const {
     signupCustomer,
     loginCustomer,
     forgotPassword,
-    resetPassword
+    resetPassword,
+    getCustomerProfile,
+    updateCustomerProfile
 } = require("../controllers/customerController");
+
+const customerProtect =
+    require("../middleware/customerAuthMiddleware");
 
 const router = express.Router();
 
@@ -15,12 +20,25 @@ const router = express.Router();
 router.post("/signup", signupCustomer);
 
 
+
 // Customer Login
 
 router.post("/login", loginCustomer);
 router.post(
     "/forgot-password",
     forgotPassword
+);
+
+router.get(
+    "/profile",
+    customerProtect,
+    getCustomerProfile
+);
+
+router.put(
+    "/profile",
+    customerProtect,
+    updateCustomerProfile
 );
 
 router.post(

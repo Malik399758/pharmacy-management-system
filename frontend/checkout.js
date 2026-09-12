@@ -1,12 +1,19 @@
+// ===============================
+// GET ELEMENTS
+// ===============================
+
 const checkoutForm =
     document.getElementById("checkout-form");
 
 const message =
     document.getElementById("message");
 
+const customerNameInput =
+    document.getElementById("customerName");
 
-let cart =
-    JSON.parse(localStorage.getItem("cart")) || [];
+const phoneInput =
+    document.getElementById("phone");
+
 
 // ===============================
 // CHECK CUSTOMER LOGIN
@@ -20,7 +27,38 @@ if (!customerToken) {
     window.location.href =
         "login.html";
 
-}    
+}
+
+
+// ===============================
+// GET CUSTOMER INFORMATION
+// ===============================
+
+const customerData =
+    JSON.parse(
+        localStorage.getItem("customer")
+    );
+
+
+if (customerData) {
+
+    customerNameInput.value =
+        customerData.name || "";
+
+    phoneInput.value =
+        customerData.phone || "";
+
+}
+
+
+// ===============================
+// GET CART
+// ===============================
+
+let cart =
+    JSON.parse(
+        localStorage.getItem("cart")
+    ) || [];
 
 
 // ===============================
@@ -34,6 +72,10 @@ checkoutForm.addEventListener(
         event.preventDefault();
 
 
+        // ===============================
+        // CHECK CART
+        // ===============================
+
         if (cart.length === 0) {
 
             message.textContent =
@@ -44,42 +86,72 @@ checkoutForm.addEventListener(
         }
 
 
-        // Get JWT token
+        // ===============================
+        // GET JWT TOKEN
+        // ===============================
 
         const token =
-            localStorage.getItem("customerToken");
+            localStorage.getItem(
+                "customerToken"
+            );
 
 
         if (!token) {
 
-            message.textContent =
-                "Please login before placing an order.";
+            window.location.href =
+                "login.html";
 
             return;
 
         }
 
 
+        // ===============================
+        // GET ADDRESS
+        // ===============================
+
         const address =
             document
                 .getElementById("address")
-                .value;
+                .value
+                .trim();
 
+
+        if (!address) {
+
+            message.textContent =
+                "Please enter your delivery address.";
+
+            return;
+
+        }
+
+
+        // ===============================
+        // PREPARE ORDER ITEMS
+        // ===============================
 
         const items =
             cart.map((product) => ({
 
-                productId: product._id,
+                productId:
+                    product._id,
 
-                name: product.name,
+                name:
+                    product.name,
 
-                price: product.price,
+                price:
+                    product.price,
 
                 quantity:
                     product.quantity || 1
 
             }));
 
+
+        // ===============================
+        // CALCULATE TOTAL
+        // ===============================
 
         const totalAmount =
             cart.reduce(
@@ -90,6 +162,10 @@ checkoutForm.addEventListener(
                 0
             );
 
+
+        // ===============================
+        // SEND ORDER TO BACKEND
+        // ===============================
 
         try {
 
@@ -127,6 +203,10 @@ checkoutForm.addEventListener(
                 await response.json();
 
 
+            // ===============================
+            // HANDLE ERROR
+            // ===============================
+
             if (!response.ok) {
 
                 throw new Error(
@@ -137,7 +217,9 @@ checkoutForm.addEventListener(
             }
 
 
-            // Save order information
+            // ===============================
+            // SAVE ORDER INFORMATION
+            // ===============================
 
             localStorage.setItem(
                 "lastOrderId",
@@ -157,17 +239,18 @@ checkoutForm.addEventListener(
             );
 
 
-            // Clear cart
+            // ===============================
+            // CLEAR CART
+            // ===============================
 
-            localStorage.removeItem("cart");
+            localStorage.removeItem(
+                "cart"
+            );
 
 
-            // Clear form
-
-            checkoutForm.reset();
-
-
-            // Go to success page
+            // ===============================
+            // GO TO SUCCESS PAGE
+            // ===============================
 
             window.location.href =
                 "order-success.html";
@@ -181,6 +264,32 @@ checkoutForm.addEventListener(
             );
 
 
+            // ===============================
+            // TOKEN EXPIRED / INVALID
+            // ===============================
+
+            if (
+                error.message
+                    .toLowerCase()
+                    .includes("not authorized")
+            ) {
+
+                localStorage.removeItem(
+                    "customerToken"
+                );
+
+                localStorage.removeItem(
+                    "customer"
+                );
+
+                window.location.href =
+                    "login.html";
+
+                return;
+
+            }
+
+
             message.textContent =
                 error.message ||
                 "Failed to place order.";
@@ -189,3 +298,36 @@ checkoutForm.addEventListener(
 
     }
 );
+
+
+// ===============================
+// CUSTOMER LOGOUT
+// ===============================
+
+const logoutBtn =
+    document.getElementById(
+        "logout-btn"
+    );
+
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener(
+        "click",
+        function () {
+
+            localStorage.removeItem(
+                "customerToken"
+            );
+
+            localStorage.removeItem(
+                "customer"
+            );
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
+
+}

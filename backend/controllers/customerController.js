@@ -387,11 +387,122 @@ const resetPassword = async (req, res) => {
 
 };
 
+// ===============================
+// GET CUSTOMER PROFILE
+// ===============================
+
+const getCustomerProfile = async (req, res) => {
+
+    try {
+
+        const customer =
+            await Customer.findById(
+                req.customer.id
+            ).select(
+                "-password -resetPasswordToken -resetPasswordExpire"
+            );
+
+
+        if (!customer) {
+
+            return res.status(404).json({
+
+                message:
+                    "Customer not found"
+
+            });
+
+        }
+
+
+        res.status(200).json({
+
+            customer
+
+        });
+
+
+    } catch (error) {
+
+        res.status(500).json({
+
+            message:
+                "Failed to fetch customer profile",
+
+            error:
+                error.message
+
+        });
+
+    }
+
+};
+
+const updateCustomerProfile = async (req, res) => {
+
+    try {
+
+        const { name, phone } = req.body;
+
+        if (!name || !phone) {
+
+            return res.status(400).json({
+                message: "Name and phone are required"
+            });
+
+        }
+
+        const customer =
+            await Customer.findById(
+                req.customer.id
+            );
+
+        if (!customer) {
+
+            return res.status(404).json({
+                message: "Customer not found"
+            });
+
+        }
+
+        customer.name = name;
+        customer.phone = phone;
+
+        await customer.save();
+
+        res.status(200).json({
+
+            message:
+                "Profile updated successfully",
+
+            customer: {
+                id: customer._id,
+                name: customer.name,
+                email: customer.email,
+                phone: customer.phone
+            }
+
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+
+            message:
+                "Failed to update profile",
+
+            error:
+                error.message
+
+        });
+
+    }
+
+};
 
 // ===============================
 // EXPORT
 // ===============================
-
 module.exports = {
 
     signupCustomer,
@@ -400,7 +511,10 @@ module.exports = {
 
     forgotPassword,
 
-    resetPassword
+    resetPassword,
+
+    getCustomerProfile,
+
+    updateCustomerProfile
 
 };
-

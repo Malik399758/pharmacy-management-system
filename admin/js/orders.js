@@ -179,6 +179,15 @@ const response = await fetch(
                             </option>
 
                             <option
+    value="Processing"
+    ${order.status === "Processing"
+        ? "selected"
+        : ""}
+>
+    Processing
+</option>
+
+                            <option
                                 value="Shipped"
                                 ${order.status === "Shipped"
                                     ? "selected"

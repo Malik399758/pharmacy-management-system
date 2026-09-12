@@ -23,6 +23,10 @@
 
 <body>
 
+    <!-- ===============================
+         NAVBAR
+    ================================ -->
+
     <header class="navbar">
 
         <div class="logo">
@@ -56,6 +60,10 @@
                 My Orders
             </a>
 
+            <a href="profile.html">
+    My Profile
+</a>
+
         </nav>
 
 
@@ -64,8 +72,20 @@
             <span>Cart</span>
         </a>
 
+
+        <button
+            id="logout-btn"
+            class="logout-btn"
+        >
+            Logout
+        </button>
+
     </header>
 
+
+    <!-- ===============================
+         MAIN
+    ================================ -->
 
     <main>
 
@@ -82,7 +102,7 @@
                 </h2>
 
                 <p>
-                    Enter your delivery information
+                    Confirm your delivery information
                     to place your order.
                 </p>
 
@@ -92,7 +112,9 @@
             <div class="checkout-container">
 
 
-                <!-- CUSTOMER INFORMATION -->
+                <!-- ===============================
+                     CUSTOMER INFORMATION
+                ================================ -->
 
                 <div class="checkout-card">
 
@@ -109,7 +131,8 @@
                             </h3>
 
                             <p>
-                                Where should we deliver your order?
+                                Your account information will
+                                be used for this order.
                             </p>
 
                         </div>
@@ -118,6 +141,7 @@
 
 
                     <form id="checkout-form">
+
 
                         <div class="form-group">
 
@@ -128,8 +152,8 @@
                             <input
                                 type="text"
                                 id="customerName"
-                                placeholder="Enter your full name"
-                                required
+                                placeholder="Your full name"
+                                readonly
                             >
 
                         </div>
@@ -144,8 +168,8 @@
                             <input
                                 type="tel"
                                 id="phone"
-                                placeholder="03XXXXXXXXX"
-                                required
+                                placeholder="Your phone number"
+                                readonly
                             >
 
                         </div>
@@ -172,8 +196,8 @@
                             <span>🔒</span>
 
                             <p>
-                                Your information is securely
-                                used only for order delivery.
+                                Your account information is securely
+                                used for order processing and delivery.
                             </p>
 
                         </div>
@@ -194,7 +218,9 @@
                 </div>
 
 
-                <!-- ORDER INFO -->
+                <!-- ===============================
+                     ORDER INFORMATION
+                ================================ -->
 
                 <div class="checkout-side">
 
@@ -249,6 +275,10 @@
 
     </main>
 
+
+    <!-- ===============================
+         FOOTER
+    ================================ -->
 
     <footer class="footer">
 

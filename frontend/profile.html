@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Customer Profile - Pharmacy Store"
+    >
+
+    <title>My Profile | Pharmacy Store</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- ===============================
+         NAVBAR
+    ================================ -->
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <span class="logo-icon">
+                💊
+            </span>
+
+            <span>
+                Pharmacy Store
+            </span>
+
+        </div>
+
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#products-section">
+                Products
+            </a>
+
+            <a href="cart.html">
+                Cart
+            </a>
+
+            <a href="my-orders.html">
+                My Orders
+            </a>
+
+        </nav>
+
+
+        <a href="cart.html" class="cart">
+            🛒
+            <span>Cart</span>
+        </a>
+
+
+        <button
+            id="logout-btn"
+            class="logout-btn"
+        >
+            Logout
+        </button>
+
+    </header>
+
+
+    <!-- ===============================
+         MAIN
+    ================================ -->
+
+    <main>
+
+        <section class="profile-section">
+
+            <div class="section-header">
+
+                <span class="section-label">
+                    My Account
+                </span>
+
+                <h2>
+                    Customer Profile
+                </h2>
+
+                <p>
+                    View your account information
+                    and security details.
+                </p>
+
+            </div>
+
+
+            <div class="profile-container">
+
+
+                <!-- ===============================
+                     PROFILE CARD
+                ================================ -->
+
+                <div class="profile-card">
+
+                    <div class="profile-card-header">
+
+                        <div class="profile-avatar">
+                            👤
+                        </div>
+
+                        <div>
+
+                            <h3 id="profile-name">
+                                Loading...
+                            </h3>
+
+                            <p>
+                                Pharmacy Store Customer
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="profile-details">
+
+
+                        <div class="profile-detail">
+
+                            <span class="profile-detail-icon">
+                                👤
+                            </span>
+
+                            <div>
+
+                                <span>
+                                    Full Name
+                                </span>
+
+                                <strong id="profile-name-detail">
+                                    Loading...
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="profile-detail">
+
+                            <span class="profile-detail-icon">
+                                📧
+                            </span>
+
+                            <div>
+
+                                <span>
+                                    Email Address
+                                </span>
+
+                                <strong id="profile-email">
+                                    Loading...
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="profile-detail">
+
+                            <span class="profile-detail-icon">
+                                📱
+                            </span>
+
+                            <div>
+
+                                <span>
+                                    Phone Number
+                                </span>
+
+                                <strong id="profile-phone">
+                                    Loading...
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="profile-detail">
+
+                            <span class="profile-detail-icon">
+                                📅
+                            </span>
+
+                            <div>
+
+                                <span>
+                                    Account Created
+                                </span>
+
+                                <strong id="profile-created">
+                                    Loading...
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-edit-section">
+
+    <h3>
+        Edit Profile
+    </h3>
+
+    <form id="edit-profile-form">
+
+        <div class="edit-field">
+
+            <label for="edit-name">
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="edit-name"
+                placeholder="Enter your name"
+                required
+            >
+
+        </div>
+
+        <div class="edit-field">
+
+            <label for="edit-phone">
+                Phone Number
+            </label>
+
+            <input
+                type="tel"
+                id="edit-phone"
+                placeholder="Enter your phone number"
+                required
+            >
+
+        </div>
+
+        <div class="edit-field">
+
+            <label for="edit-email">
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                id="edit-email"
+                readonly
+            >
+
+        </div>
+
+        <button
+            type="submit"
+            class="save-profile-btn"
+            id="save-profile-btn"
+        >
+            Save Changes
+        </button>
+
+        <p
+            id="edit-profile-message"
+            class="edit-profile-message"
+        ></p>
+
+    </form>
+
+</div>
+
+                <!-- ===============================
+                     SECURITY CARD
+                ================================ -->
+
+                <div class="profile-side-card">
+
+                    <div class="profile-side-icon">
+                        🔐
+                    </div>
+
+                    <h3>
+                        Account Security
+                    </h3>
+
+                    <p>
+                        Your account is protected with
+                        secure authentication.
+                    </p>
+
+
+                    <div class="security-item">
+
+                        <span>
+                            🔒
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Password Protected
+                            </strong>
+
+                            <p>
+                                Your password is securely
+                                encrypted.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="security-item">
+
+                        <span>
+                            🛡️
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                JWT Authentication
+                            </strong>
+
+                            <p>
+                                Your account requests are
+                                securely authenticated.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ===============================
+                 ACTIONS
+            ================================ -->
+
+            <div class="profile-actions">
+
+                <a
+                    href="my-orders.html"
+                    class="profile-action-btn primary"
+                >
+                    📦 View My Orders
+                </a>
+
+
+                <a
+                    href="index.html"
+                    class="profile-action-btn secondary"
+                >
+                    ← Back to Home
+                </a>
+
+            </div>
+
+
+            <p
+                id="profile-message"
+                class="profile-message"
+            ></p>
+
+        </section>
+
+    </main>
+
+
+    <!-- ===============================
+         FOOTER
+    ================================ -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <div class="logo">
+
+                    <span class="logo-icon">
+                        💊
+                    </span>
+
+                    <span>
+                        Pharmacy Store
+                    </span>
+
+                </div>
+
+                <p>
+                    Quality healthcare products
+                    at your fingertips.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="index.html#products-section">
+                    Products
+                </a>
+
+                <a href="my-orders.html">
+                    My Orders
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>
+                    Shopping
+                </h3>
+
+                <a href="cart.html">
+                    Shopping Cart
+                </a>
+
+                <a href="checkout.html">
+                    Checkout
+                </a>
+
+            </div>
+
+
+            <div class="footer-contact">
+
+                <h3>
+                    Need Help?
+                </h3>
+
+                <p>📞 Customer Support</p>
+                <p>📍 Pakistan</p>
+                <p>💙 We're here to help</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Pharmacy Store.
+                All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="profile.js"></script>
+
+</body>
+
+</html>
