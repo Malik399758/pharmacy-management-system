@@ -2,55 +2,120 @@ async function loadDashboard() {
 
     try {
 
-        const token = localStorage.getItem("token");
+        const token =
+            localStorage.getItem("token");
 
 
         // ===============================
         // DASHBOARD STATISTICS
         // ===============================
 
-        const response = await fetch(
-            "http://localhost:5000/api/admin/dashboard",
-            {
-                headers: {
-                    "Authorization": `Bearer ${token}`
+        const response =
+            await fetch(
+                "http://localhost:5000/api/admin/dashboard",
+                {
+                    headers: {
+                        "Authorization":
+                            `Bearer ${token}`
+                    }
                 }
-            }
-        );
+            );
 
 
-        const data = await response.json();
+        const data =
+            await response.json();
 
 
-        document.getElementById("total-products").textContent =
+        // ===============================
+        // EXISTING STATISTICS
+        // ===============================
+
+        document.getElementById(
+            "total-products"
+        ).textContent =
             data.totalProducts;
 
-        document.getElementById("total-orders").textContent =
+
+        document.getElementById(
+            "total-orders"
+        ).textContent =
             data.totalOrders;
 
-        document.getElementById("pending-orders").textContent =
+
+        document.getElementById(
+            "pending-orders"
+        ).textContent =
             data.pendingOrders;
 
-        document.getElementById("total-sales").textContent =
-            data.totalSales;
 
+        document.getElementById(
+            "total-sales"
+        ).textContent =
+            `Rs. ${data.totalSales}`;
+
+
+        // ===============================
+        // PAYMENT STATISTICS
+        // ===============================
+
+        const onlinePaidElement =
+            document.getElementById(
+                "online-paid-orders"
+            );
+
+        const codElement =
+            document.getElementById(
+                "cod-orders"
+            );
+
+        const pendingPaymentElement =
+            document.getElementById(
+                "pending-payments"
+            );
+
+
+        if (onlinePaidElement) {
+
+            onlinePaidElement.textContent =
+                data.onlinePaidOrders;
+
+        }
+
+
+        if (codElement) {
+
+            codElement.textContent =
+                data.codOrders;
+
+        }
+
+
+        if (pendingPaymentElement) {
+
+            pendingPaymentElement.textContent =
+                data.pendingPayments;
+
+        }
 
 
         // ===============================
         // RECENT ORDERS
         // ===============================
 
-        const recentResponse = await fetch(
-            "http://localhost:5000/api/admin/dashboard/recent-orders",
-            {
-                headers: {
-                    "Authorization": `Bearer ${token}`
+        const recentResponse =
+            await fetch(
+                "http://localhost:5000/api/admin/dashboard/recent-orders",
+                {
+                    headers: {
+                        "Authorization":
+                            `Bearer ${token}`
+                    }
                 }
-            }
-        );
+            );
 
 
-        const orders = await recentResponse.json();
+        const orders =
+            await recentResponse.json();
 
 
         const ordersContainer =
@@ -68,8 +133,13 @@ async function loadDashboard() {
                 "<p>No orders found.</p>";
 
             return;
+
         }
 
+
+        // ===============================
+        // DISPLAY RECENT ORDERS
+        // ===============================
 
         orders.forEach((order) => {
 
@@ -87,12 +157,30 @@ async function loadDashboard() {
                 ).toLocaleString();
 
 
+            // Payment Method
+            const paymentMethod =
+                order.paymentMethod === "ONLINE"
+                    ? "💳 Online Payment"
+                    : "💵 Cash on Delivery";
+
+
+            // Payment Status
+            const paymentStatus =
+                order.paymentStatus || "Pending";
+
+
+            // Payment Status Class
+            const paymentStatusClass =
+                paymentStatus
+                    .toLowerCase();
+
+
             orderCard.innerHTML = `
 
                 <div>
 
                     <h3>
-                        Order #${order._id}
+                        Order #${order._id.slice(-6)}
                     </h3>
 
                     <p>
@@ -108,6 +196,18 @@ async function loadDashboard() {
                     <p>
                         Date:
                         ${orderDate}
+                    </p>
+
+                    <p>
+                        Payment:
+                        ${paymentMethod}
+                    </p>
+
+                    <p>
+                        Payment Status:
+                        <span class="payment-status ${paymentStatusClass}">
+                            ${paymentStatus}
+                        </span>
                     </p>
 
                 </div>

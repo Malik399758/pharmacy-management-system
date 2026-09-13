@@ -1,4 +1,6 @@
-const ordersContainer = document.getElementById("orders");
+
+const ordersContainer =
+    document.getElementById("orders");
 
 
 // ===============================
@@ -9,28 +11,42 @@ async function loadOrders() {
 
     try {
 
-        const token = localStorage.getItem("token");
+        const token =
+            localStorage.getItem("token");
 
-const response = await fetch(
-    "http://localhost:5000/api/admin/orders",
-    {
-        headers: {
-            "Authorization": `Bearer ${token}`
-        }
-    }
-);
-        const orders = await response.json();
+
+        const response =
+            await fetch(
+                "http://localhost:5000/api/admin/orders",
+                {
+                    headers: {
+                        "Authorization":
+                            `Bearer ${token}`
+                    }
+                }
+            );
+
+
+        const orders =
+            await response.json();
+
 
         ordersContainer.innerHTML = "";
+
 
         if (orders.length === 0) {
 
             ordersContainer.innerHTML = `
                 <div class="empty-orders">
-                    <h3>No Orders Yet</h3>
+
+                    <h3>
+                        No Orders Yet
+                    </h3>
+
                     <p>
                         Customer orders will appear here.
                     </p>
+
                 </div>
             `;
 
@@ -43,11 +59,29 @@ const response = await fetch(
             const orderCard =
                 document.createElement("div");
 
-            orderCard.className = "order-card";
+
+            orderCard.className =
+                "order-card";
 
 
             const statusClass =
                 order.status.toLowerCase();
+
+
+            // ===============================
+            // PAYMENT INFORMATION
+            // ===============================
+
+            const paymentMethod =
+                order.paymentMethod || "COD";
+
+
+            const paymentStatus =
+                order.paymentStatus || "Pending";
+
+
+            const paymentStatusClass =
+                paymentStatus.toLowerCase();
 
 
             orderCard.innerHTML = `
@@ -68,6 +102,7 @@ const response = await fetch(
 
                     </div>
 
+
                     <span class="
                         order-status
                         ${statusClass}
@@ -78,11 +113,15 @@ const response = await fetch(
                 </div>
 
 
+                <!-- CUSTOMER INFORMATION -->
+
                 <div class="order-customer">
 
                     <div>
 
-                        <strong>Customer</strong>
+                        <strong>
+                            Customer
+                        </strong>
 
                         <p>
                             ${order.customerName}
@@ -93,7 +132,9 @@ const response = await fetch(
 
                     <div>
 
-                        <strong>Phone</strong>
+                        <strong>
+                            Phone
+                        </strong>
 
                         <p>
                             ${order.phone}
@@ -104,7 +145,9 @@ const response = await fetch(
 
                     <div>
 
-                        <strong>Address</strong>
+                        <strong>
+                            Address
+                        </strong>
 
                         <p>
                             ${order.address}
@@ -115,9 +158,61 @@ const response = await fetch(
                 </div>
 
 
+                <!-- PAYMENT INFORMATION -->
+
+                <div class="order-payment">
+
+                    <div>
+
+                        <strong>
+                            Payment Method
+                        </strong>
+
+                        <p>
+                            ${
+                                paymentMethod === "ONLINE"
+                                    ? "💳 Online Payment"
+                                    : "💵 Cash on Delivery"
+                            }
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Payment Status
+                        </strong>
+
+                        <p class="
+                            payment-status
+                            ${paymentStatusClass}
+                        ">
+
+                            ${
+                                paymentStatus === "Paid"
+                                    ? "✓ Paid"
+                                    : paymentStatus === "Failed"
+                                        ? "✕ Failed"
+                                        : "⏳ Pending"
+                            }
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ORDER ITEMS -->
+
                 <div class="order-items">
 
-                    <h4>Order Items</h4>
+                    <h4>
+                        Order Items
+                    </h4>
+
 
                     ${order.items.map((item) => `
 
@@ -138,6 +233,8 @@ const response = await fetch(
 
                 </div>
 
+
+                <!-- ORDER FOOTER -->
 
                 <div class="order-footer">
 
@@ -169,6 +266,7 @@ const response = await fetch(
                                 Pending
                             </option>
 
+
                             <option
                                 value="Confirmed"
                                 ${order.status === "Confirmed"
@@ -178,14 +276,16 @@ const response = await fetch(
                                 Confirmed
                             </option>
 
+
                             <option
-    value="Processing"
-    ${order.status === "Processing"
-        ? "selected"
-        : ""}
->
-    Processing
-</option>
+                                value="Processing"
+                                ${order.status === "Processing"
+                                    ? "selected"
+                                    : ""}
+                            >
+                                Processing
+                            </option>
+
 
                             <option
                                 value="Shipped"
@@ -195,6 +295,7 @@ const response = await fetch(
                             >
                                 Shipped
                             </option>
+
 
                             <option
                                 value="Delivered"
@@ -223,7 +324,9 @@ const response = await fetch(
             `;
 
 
-            ordersContainer.appendChild(orderCard);
+            ordersContainer.appendChild(
+                orderCard
+            );
 
         });
 
@@ -235,13 +338,21 @@ const response = await fetch(
             error
         );
 
+
         ordersContainer.innerHTML = `
+
             <div class="empty-orders">
-                <h3>Failed to Load Orders</h3>
+
+                <h3>
+                    Failed to Load Orders
+                </h3>
+
                 <p>
                     Please check your backend server.
                 </p>
+
             </div>
+
         `;
 
     }
@@ -263,26 +374,33 @@ async function updateStatus(orderId) {
 
     try {
 
-        const token = localStorage.getItem("token");
-
-const response = await fetch(
-    `http://localhost:5000/api/admin/orders/${orderId}`,
-    {
-        method: "PUT",
-
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-        },
-
-        body: JSON.stringify({
-            status: status
-        })
-    }
-);
+        const token =
+            localStorage.getItem("token");
 
 
-        const data = await response.json();
+        const response =
+            await fetch(
+                `http://localhost:5000/api/admin/orders/${orderId}`,
+                {
+                    method: "PUT",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json",
+
+                        "Authorization":
+                            `Bearer ${token}`
+                    },
+
+                    body: JSON.stringify({
+                        status: status
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
 
 
         if (!response.ok) {
@@ -310,6 +428,7 @@ const response = await fetch(
             "Failed to update status:",
             error
         );
+
 
         alert(
             "Failed to update order status."

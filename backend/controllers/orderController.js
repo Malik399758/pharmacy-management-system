@@ -14,10 +14,14 @@ const createOrder = async (req, res) => {
       address,
       items,
       totalAmount,
+      paymentMethod,
+      paymentStatus
     } = req.body;
 
 
-    // Get logged-in customer from JWT
+    // ===============================
+    // GET LOGGED-IN CUSTOMER
+    // ===============================
 
     const customer =
       await Customer.findById(req.customer.id);
@@ -32,7 +36,9 @@ const createOrder = async (req, res) => {
     }
 
 
-    // Check stock before creating order
+    // ===============================
+    // CHECK STOCK
+    // ===============================
 
     for (const item of items) {
 
@@ -61,7 +67,9 @@ const createOrder = async (req, res) => {
     }
 
 
-    // Create order
+    // ===============================
+    // CREATE ORDER
+    // ===============================
 
     const order = await Order.create({
 
@@ -77,10 +85,16 @@ const createOrder = async (req, res) => {
 
       totalAmount,
 
+      paymentMethod,
+
+      paymentStatus
+
     });
 
 
-    // Decrease product stock
+    // ===============================
+    // DECREASE PRODUCT STOCK
+    // ===============================
 
     for (const item of items) {
 
@@ -96,11 +110,15 @@ const createOrder = async (req, res) => {
     }
 
 
+    // ===============================
+    // RESPONSE
+    // ===============================
+
     res.status(201).json({
 
       message: "Order placed successfully",
 
-      order,
+      order
 
     });
 
@@ -111,7 +129,7 @@ const createOrder = async (req, res) => {
 
       message: "Failed to place order",
 
-      error: error.message,
+      error: error.message
 
     });
 

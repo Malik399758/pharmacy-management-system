@@ -162,6 +162,37 @@ checkoutForm.addEventListener(
                 0
             );
 
+        // ===============================
+        // GET PAYMENT METHOD
+        // ===============================
+
+        const paymentMethod =
+            document.querySelector(
+                'input[name="paymentMethod"]:checked'
+            )?.value || "COD";
+
+        // ===============================
+        // ONLINE PAYMENT CHECK
+        // ===============================
+
+        if (paymentMethod === "ONLINE") {
+
+            localStorage.setItem(
+                "pendingOrder",
+                JSON.stringify({
+                    address,
+                    items,
+                    totalAmount,
+                    paymentMethod
+                })
+            );
+
+            window.location.href =
+                "payment.html";
+
+            return;
+        }
+
 
         // ===============================
         // SEND ORDER TO BACKEND
@@ -191,7 +222,9 @@ checkoutForm.addEventListener(
 
                             items,
 
-                            totalAmount
+                            totalAmount,
+
+                            paymentMethod
 
                         })
 

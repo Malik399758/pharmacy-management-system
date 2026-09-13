@@ -1974,3 +1974,178 @@ body {
     }
 
 }
+
+/* =========================================================
+   ORDER PAYMENT INFORMATION
+========================================================= */
+
+.order-payment {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 18px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.order-payment > div {
+    background: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 9px;
+    padding: 12px;
+}
+
+.order-payment strong {
+    display: block;
+    color: #94a3b8;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+}
+
+.order-payment p {
+    color: #334155;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* Payment Status */
+
+.payment-status {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+}
+
+
+/* Paid */
+
+.payment-status.paid {
+    color: #047857 !important;
+    background: #d1fae5;
+}
+
+
+/* Pending */
+
+.payment-status.pending {
+    color: #b45309 !important;
+    background: #fef3c7;
+}
+
+
+/* Failed */
+
+.payment-status.failed {
+    color: #b91c1c !important;
+    background: #fee2e2;
+}
+
+
+/* Payment Mobile */
+
+@media (max-width: 600px) {
+
+    .order-payment {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================================================
+   PAYMENT DASHBOARD
+========================================================= */
+
+.payment-dashboard-section {
+    margin-top: 28px;
+}
+
+.payment-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.payment-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    transition: 0.2s ease;
+}
+
+.payment-stat-card:hover {
+    transform: translateY(-2px);
+    border-color: #cbd5e1;
+    box-shadow: 0 9px 25px rgba(15, 23, 42, 0.07);
+}
+
+.payment-stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.online-icon {
+    background: #dbeafe;
+}
+
+.cod-icon {
+    background: #d1fae5;
+}
+
+.pending-payment-icon {
+    background: #fef3c7;
+}
+
+.payment-stat-label {
+    display: block;
+    color: #94a3b8;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    margin-bottom: 5px;
+}
+
+.payment-stat-card h3 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.payment-stat-card p {
+    margin-top: 4px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .payment-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

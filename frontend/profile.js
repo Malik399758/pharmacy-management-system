@@ -560,6 +560,28 @@ if (changePasswordForm) {
                     "confirm-password"
                 ).value = "";
 
+                // Reset password strength
+strengthBar.style.width = "0%";
+strengthBar.style.background = "#e5e7eb";
+
+strengthText.textContent =
+    "Enter password";
+
+strengthText.style.color =
+    "#6b7280";
+
+lengthCheck.textContent =
+    "✓ At least 6 characters";
+
+lengthCheck.style.color =
+    "#6b7280";
+
+matchCheck.textContent =
+    "✓ Passwords must match";
+
+matchCheck.style.color =
+    "#6b7280";
+
 
             } catch (error) {
 
@@ -590,7 +612,279 @@ if (changePasswordForm) {
 }
 
 // ===============================
+// PASSWORD SHOW / HIDE
+// ===============================
+
+const passwordToggles =
+    document.querySelectorAll(
+        ".password-toggle"
+    );
+
+passwordToggles.forEach(
+    function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const targetId =
+                    button.getAttribute(
+                        "data-target"
+                    );
+
+                const input =
+                    document.getElementById(
+                        targetId
+                    );
+
+                if (input.type === "password") {
+
+                    input.type = "text";
+
+                    button.textContent = "🙈";
+
+                } else {
+
+                    input.type = "password";
+
+                    button.textContent = "👁️";
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+
+// ===============================
+// ===============================
+// PROFESSIONAL PASSWORD STRENGTH
+// ===============================
+
+const newPasswordInput =
+    document.getElementById("new-password");
+
+const strengthBar =
+    document.getElementById("password-strength-bar");
+
+const strengthText =
+    document.getElementById("password-strength-text");
+
+const lengthCheck =
+    document.getElementById("length-check");
+
+if (newPasswordInput) {
+
+    newPasswordInput.addEventListener(
+        "input",
+        function () {
+
+            const password =
+                newPasswordInput.value;
+
+            let score = 0;
+
+            // Empty
+            if (!password) {
+
+                strengthBar.style.width = "0%";
+                strengthBar.style.background = "#e5e7eb";
+
+                strengthText.textContent =
+                    "Enter password";
+
+                strengthText.style.color =
+                    "#6b7280";
+
+                lengthCheck.textContent =
+                    "✓ At least 6 characters";
+
+                lengthCheck.style.color =
+                    "#6b7280";
+
+                return;
+            }
+
+            // Requirements
+            const hasLength =
+                password.length >= 6;
+
+            const hasUppercase =
+                /[A-Z]/.test(password);
+
+            const hasNumber =
+                /[0-9]/.test(password);
+
+            const hasSpecial =
+                /[^A-Za-z0-9]/.test(password);
+
+            // Score
+            if (hasLength) score++;
+            if (hasUppercase) score++;
+            if (hasNumber) score++;
+            if (hasSpecial) score++;
+
+            // Length check
+            if (hasLength) {
+
+                lengthCheck.textContent =
+                    "✓ At least 6 characters";
+
+                lengthCheck.style.color =
+                    "#16a34a";
+
+            } else {
+
+                lengthCheck.textContent =
+                    "✗ At least 6 characters";
+
+                lengthCheck.style.color =
+                    "#dc2626";
+            }
+
+            // Strength
+            if (score === 1) {
+
+                strengthBar.style.width = "25%";
+                strengthBar.style.background = "#dc2626";
+
+                strengthText.textContent =
+                    "Weak";
+
+                strengthText.style.color =
+                    "#dc2626";
+
+            }
+
+            else if (score === 2) {
+
+                strengthBar.style.width = "50%";
+                strengthBar.style.background = "#f59e0b";
+
+                strengthText.textContent =
+                    "Fair";
+
+                strengthText.style.color =
+                    "#f59e0b";
+
+            }
+
+            else if (score === 3) {
+
+                strengthBar.style.width = "75%";
+                strengthBar.style.background = "#2563eb";
+
+                strengthText.textContent =
+                    "Good";
+
+                strengthText.style.color =
+                    "#2563eb";
+
+            }
+
+            else if (score === 4) {
+
+                strengthBar.style.width = "100%";
+                strengthBar.style.background = "#16a34a";
+
+                strengthText.textContent =
+                    "Strong";
+
+                strengthText.style.color =
+                    "#16a34a";
+            }
+
+        }
+    );
+
+}
+
+// ===============================
+// CONFIRM PASSWORD CHECK
+// ===============================
+
+const confirmPasswordInput =
+    document.getElementById(
+        "confirm-password"
+    );
+
+const matchCheck =
+    document.getElementById(
+        "match-check"
+    );
+
+function checkPasswordMatch() {
+
+    if (
+        !confirmPasswordInput ||
+        !newPasswordInput ||
+        !matchCheck
+    ) {
+        return;
+    }
+
+    const newPassword =
+        newPasswordInput.value;
+
+    const confirmPassword =
+        confirmPasswordInput.value;
+
+    if (!confirmPassword) {
+
+        matchCheck.textContent =
+            "✓ Passwords must match";
+
+        matchCheck.style.color =
+            "#6b7280";
+
+        return;
+    }
+
+    if (
+        newPassword ===
+        confirmPassword
+    ) {
+
+        matchCheck.textContent =
+            "✓ Passwords match";
+
+        matchCheck.style.color =
+            "#16a34a";
+
+    } else {
+
+        matchCheck.textContent =
+            "✗ Passwords do not match";
+
+        matchCheck.style.color =
+            "#dc2626";
+    }
+
+}
+
+if (newPasswordInput) {
+
+    newPasswordInput.addEventListener(
+        "input",
+        checkPasswordMatch
+    );
+
+}
+
+if (confirmPasswordInput) {
+
+    confirmPasswordInput.addEventListener(
+        "input",
+        checkPasswordMatch
+    );
+
+}
+// ===============================
 // START
 // ===============================
+
 
 loadProfile();

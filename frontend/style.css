@@ -2642,7 +2642,10 @@ a {
     width: 0%;
     height: 100%;
     border-radius: 10px;
-    transition: 0.3s ease;
+    background: #dc2626;
+    transition:
+        width 0.35s ease,
+        background 0.35s ease;
 }
 
 
