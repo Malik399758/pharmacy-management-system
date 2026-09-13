@@ -395,6 +395,201 @@ if (logoutBtn) {
 
 
 // ===============================
+// CHANGE CUSTOMER PASSWORD
+// ===============================
+
+const changePasswordForm =
+    document.getElementById(
+        "change-password-form"
+    );
+
+const changePasswordMessage =
+    document.getElementById(
+        "change-password-message"
+    );
+
+const changePasswordBtn =
+    document.getElementById(
+        "change-password-btn"
+    );
+
+
+if (changePasswordForm) {
+
+    changePasswordForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            const currentPassword =
+                document
+                    .getElementById("current-password")
+                    .value;
+
+            const newPassword =
+                document
+                    .getElementById("new-password")
+                    .value;
+
+            const confirmPassword =
+                document
+                    .getElementById("confirm-password")
+                    .value;
+
+
+            // Check passwords
+            if (
+                newPassword !==
+                confirmPassword
+            ) {
+
+                changePasswordMessage.textContent =
+                    "New passwords do not match.";
+
+                changePasswordMessage.style.color =
+                    "#dc2626";
+
+                return;
+
+            }
+
+
+            if (newPassword.length < 6) {
+
+                changePasswordMessage.textContent =
+                    "New password must be at least 6 characters.";
+
+                changePasswordMessage.style.color =
+                    "#dc2626";
+
+                return;
+
+            }
+
+
+            changePasswordBtn.disabled =
+                true;
+
+            changePasswordBtn.textContent =
+                "Changing...";
+
+            changePasswordMessage.textContent =
+                "";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "http://localhost:5000/api/customers/change-password",
+                        {
+                            method: "PUT",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json",
+
+                                "Authorization":
+                                    `Bearer ${token}`
+                            },
+
+                            body: JSON.stringify({
+
+                                currentPassword:
+                                    currentPassword,
+
+                                newPassword:
+                                    newPassword
+
+                            })
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (response.status === 401) {
+
+                    localStorage.removeItem(
+                        "customerToken"
+                    );
+
+                    localStorage.removeItem(
+                        "customer"
+                    );
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        "Failed to change password"
+                    );
+
+                }
+
+
+                changePasswordMessage.textContent =
+                    "Password changed successfully!";
+
+                changePasswordMessage.style.color =
+                    "#16a34a";
+
+
+                // Clear password fields
+                document.getElementById(
+                    "current-password"
+                ).value = "";
+
+                document.getElementById(
+                    "new-password"
+                ).value = "";
+
+                document.getElementById(
+                    "confirm-password"
+                ).value = "";
+
+
+            } catch (error) {
+
+                console.error(
+                    "Change password error:",
+                    error
+                );
+
+                changePasswordMessage.textContent =
+                    error.message ||
+                    "Failed to change password.";
+
+                changePasswordMessage.style.color =
+                    "#dc2626";
+
+            }
+
+
+            changePasswordBtn.disabled =
+                false;
+
+            changePasswordBtn.textContent =
+                "Change Password";
+
+        }
+    );
+
+}
+
+// ===============================
 // START
 // ===============================
 

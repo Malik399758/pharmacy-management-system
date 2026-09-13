@@ -6,7 +6,8 @@ const {
     forgotPassword,
     resetPassword,
     getCustomerProfile,
-    updateCustomerProfile
+    updateCustomerProfile,
+    changeCustomerPassword
 } = require("../controllers/customerController");
 
 const customerProtect =
@@ -39,6 +40,12 @@ router.put(
     "/profile",
     customerProtect,
     updateCustomerProfile
+);
+
+router.put(
+    "/change-password",
+    customerProtect,
+    changeCustomerPassword
 );
 
 router.post(

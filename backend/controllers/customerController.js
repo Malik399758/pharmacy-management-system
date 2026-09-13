@@ -500,6 +500,120 @@ const updateCustomerProfile = async (req, res) => {
 
 };
 
+const changeCustomerPassword = async (req, res) => {
+
+    try {
+
+        const {
+            currentPassword,
+            newPassword
+        } = req.body;
+
+
+        // Check required fields
+        if (!currentPassword || !newPassword) {
+
+            return res.status(400).json({
+
+                message:
+                    "Current password and new password are required"
+
+            });
+
+        }
+
+
+        // Find logged-in customer
+        const customer =
+            await Customer.findById(
+                req.customer.id
+            );
+
+
+        if (!customer) {
+
+            return res.status(404).json({
+
+                message:
+                    "Customer not found"
+
+            });
+
+        }
+
+
+        // Check current password
+        const isMatch =
+            await bcrypt.compare(
+                currentPassword,
+                customer.password
+            );
+
+
+        if (!isMatch) {
+
+            return res.status(400).json({
+
+                message:
+                    "Current password is incorrect"
+
+            });
+
+        }
+
+
+        // Check new password length
+        if (newPassword.length < 6) {
+
+            return res.status(400).json({
+
+                message:
+                    "New password must be at least 6 characters"
+
+            });
+
+        }
+
+
+        // Hash new password
+        const hashedPassword =
+            await bcrypt.hash(
+                newPassword,
+                10
+            );
+
+
+        // Save new password
+        customer.password =
+            hashedPassword;
+
+        await customer.save();
+
+
+        res.status(200).json({
+
+            message:
+                "Password changed successfully"
+
+        });
+
+
+    } catch (error) {
+
+        res.status(500).json({
+
+            message:
+                "Failed to change password",
+
+            error:
+                error.message
+
+        });
+
+    }
+
+};
+
 // ===============================
 // EXPORT
 // ===============================
@@ -515,6 +629,8 @@ module.exports = {
 
     getCustomerProfile,
 
-    updateCustomerProfile
+    updateCustomerProfile,
+
+    changeCustomerPassword
 
 };
