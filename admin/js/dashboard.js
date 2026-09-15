@@ -51,7 +51,7 @@ async function loadDashboard() {
         document.getElementById(
             "total-sales"
         ).textContent =
-            `Rs. ${data.totalSales}`;
+            `${data.totalSales}`;
 
 
         // ===============================
@@ -175,53 +175,61 @@ async function loadDashboard() {
                     .toLowerCase();
 
 
-            orderCard.innerHTML = `
+    orderCard.innerHTML = `
 
-                <div>
+    <div class="recent-order-main">
 
-                    <h3>
-                        Order #${order._id.slice(-6)}
-                    </h3>
+        <div class="recent-order-id">
+            <span>ORDER</span>
+            <h3>#${order._id.slice(-6)}</h3>
+        </div>
 
-                    <p>
-                        Customer:
-                        ${order.customerName}
-                    </p>
+        <div class="recent-order-customer">
+            <span>CUSTOMER</span>
+            <p>${order.customerName}</p>
+        </div>
 
-                    <p>
-                        Total:
-                        Rs. ${order.totalAmount}
-                    </p>
+        <div class="recent-order-payment">
 
-                    <p>
-                        Date:
-                        ${orderDate}
-                    </p>
+            <span class="recent-order-label">
+                PAYMENT
+            </span>
 
-                    <p>
-                        Payment:
-                        ${paymentMethod}
-                    </p>
+            <span class="recent-payment-method">
+                ${paymentMethod}
+            </span>
 
-                    <p>
-                        Payment Status:
-                        <span class="payment-status ${paymentStatusClass}">
-                            ${paymentStatus}
-                        </span>
-                    </p>
+            <span class="recent-payment-status ${paymentStatusClass}">
+                ${paymentStatus}
+            </span>
 
-                </div>
+        </div>
 
+        <div class="recent-order-total">
+            <span>TOTAL</span>
+            <strong>
+                Rs. ${order.totalAmount}
+            </strong>
+        </div>
 
-                <div>
+        <div class="recent-order-date">
+            <span>DATE</span>
+            <p>${orderDate}</p>
+        </div>
 
-                    <strong>
-                        ${order.status}
-                    </strong>
+    </div>
 
-                </div>
+    <div class="recent-order-status">
 
-            `;
+        <span>STATUS</span>
+
+        <strong class="order-status-${order.status.toLowerCase()}">
+            ${order.status}
+        </strong>
+
+    </div>
+
+`;
 
 
             ordersContainer.appendChild(
